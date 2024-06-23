@@ -11,7 +11,7 @@ public class APITest {
 
 	@BeforeClass
 	public static void setup() {
-		RestAssured.baseURI = "http://localhost:8010";
+		RestAssured.baseURI = "http://localhost:8001/tasks-backend";
 	}
 	
 	@Test
@@ -44,7 +44,6 @@ public class APITest {
 		.when()
 			.post("/todo")
 		.then()
-		.log().all()
 			.statusCode(400)
 			.body("message", CoreMatchers.is("Due date must not be in past"))
 		;
